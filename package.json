@@ -1,0 +1,51 @@
+{
+  "name": "youyudshm",
+  "version": "0.3.0",
+  "private": true,
+  "description": "有鱼工作台：DSHM 端侧的 Codex 风格工作台 + 启动守卫（防砖）+ SSH 面板 + 输入框上方三联下拉（强度 / 模型 / 余额）。一个包，装完即用。",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/",
+    "lib/",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "scripts/"
+  ],
+  "engines": {
+    "node": ">=22.19"
+  },
+  "dependencies": {},
+  "dsh": {
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-settings-plugins",
+        "@deepseek-ai/dsh-client-ui-model-selection"
+      ],
+      "platform": "web"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youyu551572/youyudshm-workbench.git"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "harmonyos",
+    "dshm",
+    "workbench"
+  ]
+}
