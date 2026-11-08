@@ -1,0 +1,11 @@
+# Host-plane row for youyudshm.
+#
+# 这一行做三件事，都在 apply() 里按需注册，缺服务就跳过：
+#   1. /plugins/youyudshm/* 一组端点（运行时事实、SSH 密码保管、会话级服务器授权、启动守卫）
+#   2. 工具 ssh_connect + 一条 tools.guard()（本会话没勾选的服务器，ssh_* 一律拒绝）
+#   3. 首次装载时把启动守卫装进核心的 profile-boot.js（幂等，失败不影响启动）
+#
+# 不注入 tools 之外的硬依赖；webServer / tools 都走作用域注入 ⇒ 不挡在 listen() 之前。
+- insert:
+    - id: youyudshm
+      name: youyudshm
